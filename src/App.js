@@ -1,11 +1,12 @@
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
-import Feed from "./components/Feed";
+import TweetsFeed from "./components/TweetsFeed";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
      <Sidebar />
+     <TweetsFeed />
     </div>
   );
 }
