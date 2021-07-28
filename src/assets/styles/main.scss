@@ -1,7 +1,10 @@
 
 @import "./base/base";
+@import "./base/variables";
 
 @import "./components/sidebarOption";
 @import "./components/sidebar";
 @import "./components/tweetsFeed";
 @import "./components/tweetBox";
+@import "./components/post";
+@import "./components/widgets";

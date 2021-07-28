@@ -2,8 +2,8 @@ import React from 'react'
 
 const Widgets = () => {
     return (
-        <div>
-            
+        <div className="widgets">
+            Widgets
         </div>
     )
 }
