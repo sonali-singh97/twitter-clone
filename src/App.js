@@ -6,9 +6,10 @@ import Widgets from "./components/Widgets";
 function App() {
   return (
     <div className="app">
-     <Sidebar />
+      <Login />
+     {/* <Sidebar />
      <TweetsFeed />
-     <Widgets />
+     <Widgets /> */}
     </div>
   );
 }

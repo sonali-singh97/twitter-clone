@@ -20,7 +20,7 @@ import styles from "./styles"
         };
     
         let sawo = new Sawo(config)
-
+        console.log(sawo)
         sawo.showForm()
 
     })
@@ -51,8 +51,7 @@ import styles from "./styles"
             {/* Showing login form */}
             {
               !isLoggedIn && (
-                <div style={styles.formContainer} id="sawo-container">
-                  {/* Sawo form will appear here */}
+                <div style={styles.formContainer} id="1c6f12f0-871b-44e4-ac36-99e527fad225">
                 </div>
             )}
           </section>
