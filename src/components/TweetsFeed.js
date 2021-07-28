@@ -18,6 +18,20 @@ const Feed = () => {
         image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
         avatar="https://image.pngaaa.com/408/81408-middle.png" />
   
+
+         <Post 
+        displayName= "Sonali Singh" 
+        username = "sonali" 
+        text="New Post" 
+        image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
+        avatar="https://image.pngaaa.com/408/81408-middle.png" />
+
+    <Post 
+        displayName= "Sonali Singh" 
+        username = "sonali" 
+        text="New Post" 
+        image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
+        avatar="https://image.pngaaa.com/408/81408-middle.png" />   
       </div>
     )
 }
