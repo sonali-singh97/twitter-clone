@@ -1,4 +1,6 @@
 const asyncHandler = require("express-async-handler");
+const mongoose = require("mongoose");
+const User = require("../models/user");
 
  const ensureAuth = asyncHandler(async (req, res, next) => {
 
@@ -6,7 +8,10 @@ const asyncHandler = require("express-async-handler");
   const  {authorization} =  req.headers;
 
     try {
-      req.user = await UserfindById(authorization);
+
+      const user = await User.findOne({ userId : authorization });
+      console.log(user)
+      req.user = user;
       next();
     } catch (error) {
       console.error(error);

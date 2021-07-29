@@ -1,10 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import { Avatar, Button } from "@material-ui/core";
-
+import axios from "axios";
 const TweetBox = () => {
 
     const [tweetMessage, setTweetMessage] = useState("");
     const [tweetImage, setTweetImage] = useState("");
+
+    const createPost = async() => {
+      const body = {
+        caption: tweetMessage,
+        photo : tweetImage
+      }
+     const  headers = {
+        "Content-Type": "application/json",
+        "authorization": localStorage.getItem("userId"),
+      }
+
+      try{
+      const res = axios.post("http://localhost:5000/post/create", body , {
+        headers : headers
+      })
+      console.log(res);
+    }
+    catch(err){
+      console.log(err);
+    }
+      
+    }
 
     return (
         <div className="tweetBox">
@@ -28,6 +50,7 @@ const TweetBox = () => {
   
           <Button
             type="submit"
+            onClick = {createPost}
             className="tweetBox__tweetButton"
           >
             Tweet

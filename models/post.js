@@ -4,13 +4,12 @@ const mongoose = require("mongoose"),
 const postSchema = new mongoose.Schema(
   {
    
-    tweet: {
+    caption: {
       type: String,
       required: true,
     },
     photo: {
       type: String,
-      required: true,
     },
     likes: [{ type: ObjectId, ref: "User" }],
     comments: [

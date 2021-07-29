@@ -24,7 +24,7 @@ const createPost = asyncHandler(async (req, res) => {
         caption,
         photo
     } = req.body;
-    if (!caption || !photo) {
+    if ( !caption || !caption && !photo) {
         return res.status(422).json({
             error: "please add all the details"
         })

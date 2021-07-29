@@ -1,8 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import TweetBox from "./TweetBox";
 import Post from "./Post";
+import axios from "axios";
 
 const Feed = () => {
+
+  const [posts, setPosts] = useState();
+
+   useEffect(async() => {
+    try {
+      const  headers = {
+        "Content-Type": "application/json",
+        "authorization": localStorage.getItem("userId"),
+      }
+      const res = await axios.get("http://localhost:5000/post", { headers : headers});
+      console.log(res.data.posts)
+      setPosts(res.data.posts)
+    }
+    catch (err){
+      console.log(err)
+    }
+   }, [])
+
     return (
         <div className="feed">
         <div className="feed__header">
@@ -11,27 +30,20 @@ const Feed = () => {
   
         <TweetBox />
 
-        <Post 
-        displayName= "Sonali Singh" 
-        username = "sonali" 
-        text="New Post" 
-        image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
-        avatar="https://image.pngaaa.com/408/81408-middle.png" />
-  
+       { posts && posts.map((post) => {
+         return  <Post 
+         key = {post._id}
+         displayName= {post.postedBy  &&  post.postedBy.fullName}
+         username = {post.postedBy && post.postedBy.fullName.toLowerCase().split(" ").join("")}
+         text= {post.caption}
+         image = {post.photo}
+         avatar={post.postedBy && post.postedBy.image}
+         likes={post.likes}
+         comments={post.comments}
+          />
+       })
+  }
 
-         <Post 
-        displayName= "Sonali Singh" 
-        username = "sonali" 
-        text="New Post" 
-        image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
-        avatar="https://image.pngaaa.com/408/81408-middle.png" />
-
-    <Post 
-        displayName= "Sonali Singh" 
-        username = "sonali" 
-        text="New Post" 
-        image = "https://www.sierraclub.org/sites/www.sierraclub.org/files/styles/sierra_full_page_width/public/slideshows/slide7_11.jpg?itok=UdNlkVF8"
-        avatar="https://image.pngaaa.com/408/81408-middle.png" />   
       </div>
     )
 }

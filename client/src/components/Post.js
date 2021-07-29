@@ -26,7 +26,7 @@ const Post = ({ displayName, username, text, image, avatar }) => {
               <p>{text}</p>
             </div>
           </div>
-          <img src={image} alt="" />
+        {  image && <img src={image} alt="" />}
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
