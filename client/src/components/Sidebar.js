@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import SidebarOption from './SidebarOption';
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
@@ -26,7 +27,7 @@ const Sidebar = () => {
         <SidebarOption Icon={MoreHorizIcon} text="More" />
   
         <Button variant="outlined" className="sidebar__tweet" fullWidth>
-          Tweet
+         <Link to="/login"> Login </Link> 
         </Button>
       </div>
     )

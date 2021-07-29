@@ -14,13 +14,12 @@ const Feed = () => {
         "authorization": localStorage.getItem("userId"),
       }
       const res = await axios.get("http://localhost:5000/post", { headers : headers});
-      console.log(res.data.posts)
       setPosts(res.data.posts)
     }
     catch (err){
       console.log(err)
     }
-   }, [])
+   }, [posts])
 
     return (
         <div className="feed">

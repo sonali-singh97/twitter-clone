@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Avatar, Button } from "@material-ui/core";
 import axios from "axios";
 const TweetBox = () => {

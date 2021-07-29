@@ -10,7 +10,6 @@ const User = require("../models/user");
     try {
 
       const user = await User.findOne({ userId : authorization });
-      console.log(user)
       req.user = user;
       next();
     } catch (error) {
