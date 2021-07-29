@@ -17,7 +17,7 @@ const TweetBox = () => {
       }
 
       try{
-      const res = axios.post("https://twitter-web-apps.herokuapp.com/create", body , {
+      const res = axios.post("http://localhost:5000/post/create", body , {
         headers : headers
       })
       console.log(res);

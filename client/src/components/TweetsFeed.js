@@ -13,7 +13,7 @@ const Feed = () => {
         "Content-Type": "application/json",
         "authorization": localStorage.getItem("userId"),
       }
-      const res = await axios.get("https://twitter-web-apps.herokuapp.com/post", { headers : headers});
+      const res = await axios.get("http://localhost:5000/post", { headers : headers});
       console.log(res.data.posts)
       setPosts(res.data.posts)
     }
