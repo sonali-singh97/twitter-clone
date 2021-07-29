@@ -34,7 +34,7 @@ import styles from "./styles"
         setIsLoggedIn(true);
 
         localStorage.setItem("userId", payload.user_id);
-        localStorage.setItem("userName", payload.)
+        // localStorage.setItem("userName", payload.)
       
         const body = {
           "user_id": "2d0dfcf0-d920-4c0c-95b1-b50db7660bc4"
