@@ -46,11 +46,6 @@ Go to the project directory
 ```bash
   cd my-project
 ```
-Add .env file in main folder
-
-```bash
- MONGO_URI=<mongo-url>
-```
 
 Install dependencies
 
