@@ -1,38 +1,50 @@
 
+const User = require("../models/user");
+const asyncHandler = require("express-async-handler");
 
 // @desc Register User
-// @route POST /auth/user/signup
+// @route POST /auth/login
 // @Access Public
-const registerUser = asyncHandler(async (req, res) => {
-    console.log("request")
-    // const {
-    //     fullName,
-    //     email,
-    //     password,
-    // } = req.body;
+const loginUser = asyncHandler(async (req, res) => {
+    console.log(req.body)
+    const {
+        fullName,
+        email,
+        userId
+    } = req.body;
 
-    // const user = await User.findOne({
-    //     email
-    // });
+    const user = await User.findOne({
+        email
+    });
 
-    // if (user) {
-    //     res.status(422).json({
-    //         msg: "User already exists in database"
-    //     })
-    // } else {
-    //     const hashedPassword = await bcrypt.hash(password, 12)
-   
-    //     const newUser = new User({
-    //         fullName,
-    //         email,
-    //         password : hashedPassword,
-    //     });
+    if (user) {
+        res.status(200).json({
+            msg: "User already exists in database"
+        })
+    } else {
+  
+        const newUser = new User({
+            fullName,
+            email,
+            userId
+        });
 
-    //     try {
-    //         const result = await newUser.save();
-    //         res.status(200).redirect('/login')
-    //     } catch (err) {
-    //         res.status(500).send(err)
-    //     }
-    // }
+        console.log(newUser)
+        try {
+            const result = await newUser.save();
+            res.status(200).json({ msg: "registeration successful ", user: result})
+        } catch (err) {
+            res.status(500).send(err)
+        }
+    }
 });
+
+const logoutUser = asyncHandler(async (req, res) => {
+    console.log("request")
+
+});
+
+module.exports={
+    loginUser, 
+    logoutUser
+}

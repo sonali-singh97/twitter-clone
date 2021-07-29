@@ -8,7 +8,7 @@ import styles from "./styles"
     const [userPayload, setUserPayload] = useState({})
     const [isLoggedIn, setIsLoggedIn] = useState(false)
   
-    useEffect(() => {
+    useEffect(async() => {
         var config = {
             // should be same as the id of the container created on 3rd step
             containerID: "1c6f12f0-871b-44e4-ac36-99e527fad225",
@@ -36,12 +36,20 @@ import styles from "./styles"
         localStorage.setItem("userId", payload.user_id);
         // localStorage.setItem("userName", payload.)
       
-        const body = {
-          "user_id": "2d0dfcf0-d920-4c0c-95b1-b50db7660bc4"
-        }
-        const res = await axios.post("https://api.sawolabs.com/api/v1/userverify/", body )
-        console.log("response :")
-        console.log(res)
+        // const body = {
+        //   "user_id": "2d0dfcf0-d920-4c0c-95b1-b50db7660bc4"
+        // }
+        // const res = await axios.post("https://api.sawolabs.com/api/v1/userverify/", body )
+        // console.log("response :")
+        // console.log(res)
+
+        // const body = {
+        //   userId: "2d0dfcf0-d920-4c0c-95b1-b50db7660bc4",
+        //   email:"sonali122000@gmail.com",
+        //   fullName:"Sonali Singh"
+        // }
+        // const res = await axios.post("https://localhost:5000/login", body);
+        // console.log(res);
       }
 
     

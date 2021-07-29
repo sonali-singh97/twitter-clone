@@ -1,31 +1,24 @@
 const asyncHandler = require("express-async-handler");
 
  const ensureAuth = asyncHandler(async (req, res, next) => {
-  let token;
+
   console.log(req.headers)
-  const userId = localStorage.getItem("userId");
-  if (
-    jwt_token && jwt_token.startsWith("Bearer")
-  ) {
+  const  {authorization} =  req.headers;
+
     try {
-
-    //   req.doctor = await Doctor.findById(decodeToken.id);
-
+      req.user = await UserfindById(authorization);
       next();
     } catch (error) {
       console.error(error);
       res.status(401);
       throw new Error("Not authorized, verification failed");
     }
-  }
 
-  if (!token) {
+  if (!authorization) {
     res.status(401);
-    throw new Error("No token, Not authorized");
+    throw new Error(" Not authorized");
   }
 });
 
 
-module.exports = {
-    ensureAuth,
-  }
+module.exports = ensureAuth ;
