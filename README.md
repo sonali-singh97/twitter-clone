@@ -33,3 +33,37 @@ MERN stack social media application
 **Server:** Node, Express, MongoDB
 
   
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/sonali-singh97/twitter-clone/tree/main
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+Add .env file in main folder
+
+```bash
+ MONGO_URI=<mongo-url>
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm  start
+```
+
+  
+
+  
