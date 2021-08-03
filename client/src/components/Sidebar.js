@@ -15,9 +15,13 @@ import { Button } from "@material-ui/core";
 
 const Sidebar = () => {
   const history = useHistory();
+
+  const login = localStorage.getItem("userId");
     const handleLogout = () => {
       
-      localStorage.removeItem("userId")
+      if(login){
+        localStorage.removeItem("userId")
+      }
 
       history.push("/login")
     }
@@ -32,7 +36,7 @@ const Sidebar = () => {
       
   
         <Button variant="outlined" className="sidebar__tweet" fullWidth>
-         <Link  onClick={handleLogout}> Logout </Link> 
+         <Link  onClick={handleLogout}> {login ? "Logout" : "Login"} </Link> 
         </Button>
       </div>
     )

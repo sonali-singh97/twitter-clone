@@ -6,6 +6,8 @@ const TweetBox = () => {
     const [tweetMessage, setTweetMessage] = useState("");
     const [tweetImage, setTweetImage] = useState("");
 
+    const login = localStorage.getItem("userId")
+
     const createPost = async() => {
       const body = {
         caption: tweetMessage,
@@ -30,7 +32,8 @@ const TweetBox = () => {
 
     return (
         <div className="tweetBox">
-        <form>
+
+          { login ?          <form>
           <div className="tweetBox__input">
             <Avatar src="https://res.cloudinary.com/talk-amigo/image/upload/v1610989192/dc5dp7q6wupbfu97wkv8.png" />
             <input
@@ -55,8 +58,13 @@ const TweetBox = () => {
           >
             Tweet
           </Button>
-        </form>
-      </div>
+        </form> :
+        
+       <center> <h3 style={{color: "tomato"}}> You have to login first to enable Tweet option</h3> </center>
+        }
+
+     
+     </div>
     )
 }
 

@@ -10,6 +10,8 @@ function App() {
 
     const loggedIn = localStorage.getItem("userId")
 
+    
+
   return (
     <Router>
       <Route path="/register" exact >
@@ -19,18 +21,18 @@ function App() {
         <Login />
       </Route>
       <Route path= "/" exact >
-   { loggedIn ?   <div className="app">
+    <div className="app">
      <Sidebar />
      <TweetsFeed />
      <Widgets />
-     </div> : <Redirect to="/login" />}
+     </div> 
      </Route>
      <Route path= "/profile" exact >
-    { loggedIn ?   <div className="app">
+    <div className="app">
      <Sidebar />
      <Profile />
      <Widgets />
-     </div> : <Redirect to="/login" />}
+     </div> 
      </Route>
      
     </Router>

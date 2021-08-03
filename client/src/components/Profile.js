@@ -9,8 +9,11 @@ const Feed = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+   let login;
+
    useEffect(() => {
 
+    login = localStorage.getItem("userId")
     const fetchTweets = async() => {
       try {
         const  headers = {
@@ -36,8 +39,9 @@ const Feed = () => {
         <div className="feed__header">
           <h2>Profile</h2>
         </div>
-        
-        <div className="profile" style={{padding: "15px 20px", display: "flex", alignItems: "center"}}>
+
+        {login ? <>
+          <div className="profile" style={{padding: "15px 20px", display: "flex", alignItems: "center"}}>
         <Avatar style={{ marginRight: "20px", width: "100px !important"}} src="https://res.cloudinary.com/talk-amigo/image/upload/v1610989192/dc5dp7q6wupbfu97wkv8.png" />
 
         <div>
@@ -62,6 +66,9 @@ const Feed = () => {
        <center>You haven't posted any post yet</center>
   }
 
+         </> : <div style={{ marginTop: "50px"}}> <center> You have to login first</center> </div>}
+        
+        
       </div>
     )
 }
