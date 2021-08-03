@@ -20,7 +20,7 @@ const Register = () => {
         }
         console.log(body)
         
-        const res = await axios.post("http://localhost:5000/auth/register", body)
+        const res = await axios.post("https://twitter-web-apps.herokuapp.com/auth/register", body)
         console.log(res)
 
         history.push("/login")

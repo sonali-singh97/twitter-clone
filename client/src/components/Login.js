@@ -20,7 +20,7 @@ const Login = () => {
         password: e.target[1].value,
     }
     
-    const res = await axios.post("http://localhost:5000/auth/login", body)
+    const res = await axios.post("https://twitter-web-apps.herokuapp.com/auth/login", body)
     localStorage.setItem("userId", res.data.token)
 
     history.push("/")

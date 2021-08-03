@@ -20,7 +20,7 @@ const Feed = () => {
           "Content-Type": "application/json",
           "authorization": `Bearer ${localStorage.getItem("userId")}`,
         }
-        const res = await axios.get("http://localhost:5000/post/profile", { headers : headers});
+        const res = await axios.get("https://twitter-web-apps.herokuapp.com/post/profile", { headers : headers});
         setName(res.data.posts[0].postedBy.fullName)
         setEmail(res.data.posts[0].postedBy.email)
         console.log(res.data.posts)
