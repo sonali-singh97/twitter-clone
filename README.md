@@ -6,7 +6,9 @@ MERN stack social media application
 
 ## Screenshots
 
-![Home Page Screenshot](https://res.cloudinary.com/talk-amigo/image/upload/v1627574331/twitter_vnhado.png)
+![Home Page Screenshot](https://res.cloudinary.com/talk-amigo/image/upload/v1627998363/twitter-home_ekkqh6.png)
+
+![Login Page Screenshot](https://res.cloudinary.com/talk-amigo/image/upload/v1627998362/twitter-login_wxkc3n.png)
 
   
 ## Features
@@ -28,7 +30,7 @@ MERN stack social media application
   
 ## Tech Stack
 
-**Client:** React, Sass, Sawo API
+**Client:** React, Sass, Sawo API, Material UI
 
 **Server:** Node, Express, MongoDB
 
