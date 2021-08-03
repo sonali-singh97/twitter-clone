@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { useHistory} from "react-router"
 import SidebarOption from './SidebarOption';
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
@@ -13,21 +14,25 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Button } from "@material-ui/core";
 
 const Sidebar = () => {
+  const history = useHistory();
+    const handleLogout = () => {
+      
+      localStorage.removeItem("userId")
+
+      history.push("/login")
+    }
+
     return (
         <div className="sidebar">
         <TwitterIcon className="sidebar__twitterIcon" />
   
-        <SidebarOption active Icon={HomeIcon} text="Home" />
-        <SidebarOption Icon={SearchIcon} text="Explore" />
-        <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" />
-        <SidebarOption Icon={MailOutlineIcon} text="Messages" />
-        <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" />
-        <SidebarOption Icon={ListAltIcon} text="Lists" />
-        <SidebarOption Icon={PermIdentityIcon} text="Profile" />
-        <SidebarOption Icon={MoreHorizIcon} text="More" />
+        <SidebarOption  Icon={HomeIcon} text="Home" link="/" />
+        <SidebarOption Icon={PermIdentityIcon} text="Profile" link="/profile" />
+        <SidebarOption Icon={SearchIcon} text="Explore" link="/" />
+      
   
         <Button variant="outlined" className="sidebar__tweet" fullWidth>
-         <Link to="/login"> Login </Link> 
+         <Link  onClick={handleLogout}> Logout </Link> 
         </Button>
       </div>
     )

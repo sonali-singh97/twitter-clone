@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
-    userId :{
-        type: String,
-        required: true,
-        unique: true
-    },
 
     fullName: {
         type: String,
@@ -17,9 +12,13 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        required: true,
+        unique:true
+    },
+    password : {
+        type: String,
         required: true
     },
-
     image: {
         type: String,
         default: "https://res.cloudinary.com/talk-amigo/image/upload/v1610989192/dc5dp7q6wupbfu97wkv8.png"

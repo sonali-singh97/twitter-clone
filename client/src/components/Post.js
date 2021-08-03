@@ -29,7 +29,6 @@ const Post = ({ displayName, username, text, image, avatar }) => {
         {  image && <img src={image} alt="" />}
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
-            <RepeatIcon fontSize="small" />
             <FavoriteBorderIcon fontSize="small" />
             <PublishIcon fontSize="small" />
           </div>

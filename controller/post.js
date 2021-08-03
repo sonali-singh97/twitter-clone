@@ -6,8 +6,8 @@ const getAllPosts = asyncHandler(async (req, res) => {
    try { 
 
    const posts = await Post.find()
-    .populate("postedBy","_id userId fullName image")
-    .populate("comments.postedBy", "_id userId fullName image")
+    .populate("postedBy","_id fullName image")
+    .populate("comments.postedBy", "_id fullName email image")
     .sort("-createdAt")
     
     res.status(200).json({posts})
@@ -16,10 +16,24 @@ const getAllPosts = asyncHandler(async (req, res) => {
     }
 });
 
+const getPersonalPosts = asyncHandler(async (req, res) => {
+    try { 
+ 
+    const posts = await Post.find({postedBy : req.user._id})
+     .populate("postedBy","_id fullName email image")
+     .populate("comments.postedBy", "_id fullName  image")
+     .sort("-createdAt")
+     
+     res.status(200).json({posts})
+     } catch (err) {
+         return res.status(422).json(err)
+     }
+ });
 // @desc Create Post
 // @route POST /post/create
 // @Access Private
 const createPost = asyncHandler(async (req, res) => {
+
     const {
         caption,
         photo
@@ -36,7 +50,9 @@ const createPost = asyncHandler(async (req, res) => {
         postedBy: req.user
     })
     try {
+
         const result = await post.save();
+
         res.status(200).json({
             post: result,
             message: " post created successfully"
@@ -55,7 +71,7 @@ const likePost = asyncHandler(async (req, res) => {
             }, {
                 new: true
             })
-            .populate("postedBy", "_id userId fullName image")
+            .populate("postedBy", "_id fullName image")
         return res.json(post);
 
     } catch (err) {
@@ -72,7 +88,7 @@ const unlikePost = asyncHandler(async (req, res) => {
             }, {
                 new: true
             })
-            .populate("postedBy", "_id userId fullName image")
+            .populate("postedBy", "_id fullName image")
 
         return res.json(post);
 
@@ -85,7 +101,7 @@ const unlikePost = asyncHandler(async (req, res) => {
 const addComment = asyncHandler(async (req, res) => {
     const comment = {
         text: req.body.text,
-        postedBy: req.userId
+        postedBy: req.user
     }
 
     try {
@@ -96,8 +112,8 @@ const addComment = asyncHandler(async (req, res) => {
             }, {
                 new: true
             })
-            .populate("comments.postedBy", "_id userId fullName image")
-            .populate("postedBy", "_id userId fullName image")
+            .populate("comments.postedBy", "_id  fullName image")
+            .populate("postedBy", "_id  fullName image")
         return res.json(post);
 
     } catch (err) {
@@ -111,5 +127,6 @@ module.exports = {
     likePost,
     unlikePost,
     addComment,
-    getAllPosts
+    getAllPosts,
+    getPersonalPosts
 }

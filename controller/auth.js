@@ -1,16 +1,14 @@
 
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
 
-// @desc Register User
-// @route POST /auth/login
-// @Access Public
-const loginUser = asyncHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
     console.log(req.body)
     const {
         fullName,
         email,
-        userId
+        password
     } = req.body;
 
     const user = await User.findOne({
@@ -18,7 +16,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
 
     if (user) {
-        res.status(200).json({
+        res.status(400).json({
             msg: "User already exists in database"
         })
     } else {
@@ -26,7 +24,7 @@ const loginUser = asyncHandler(async (req, res) => {
         const newUser = new User({
             fullName,
             email,
-            userId
+            password
         });
 
         console.log(newUser)
@@ -34,17 +32,46 @@ const loginUser = asyncHandler(async (req, res) => {
             const result = await newUser.save();
             res.status(200).json({ msg: "registeration successful ", user: result})
         } catch (err) {
+            console.log(err)
             res.status(500).send(err)
         }
     }
 });
 
-const logoutUser = asyncHandler(async (req, res) => {
-    console.log("request")
+const loginUser = asyncHandler(async (req, res) => {
+    console.log(req.body)
+    const {
+        email,
+        password
+    } = req.body;
 
+    try {
+
+    const user = await User.findOne({
+        email, password
+    });
+
+    console.log(user)
+
+    if (user) {
+        const id = user._id;
+        const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "10d" });
+        console.log(token)
+        res.status(200).json({
+        ...user, 
+        token
+        })
+    }
+ } 
+
+ catch(err){
+     res.status(400).json(err);
+ }
 });
 
+
+
 module.exports={
+    registerUser,
     loginUser, 
-    logoutUser
 }

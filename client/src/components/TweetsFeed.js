@@ -7,18 +7,23 @@ const Feed = () => {
 
   const [posts, setPosts] = useState();
 
-   useEffect(async() => {
-    try {
-      const  headers = {
-        "Content-Type": "application/json",
-        "authorization": localStorage.getItem("userId"),
+   useEffect(() => {
+
+    const fetchTweets = async() => {
+      try {
+        const  headers = {
+          "Content-Type": "application/json",
+          "authorization": `Bearer ${localStorage.getItem("userId")}`,
+        }
+        const res = await axios.get("http://localhost:5000/post", { headers : headers});
+        setPosts(res.data.posts)
       }
-      const res = await axios.get("http://localhost:5000/post", { headers : headers});
-      setPosts(res.data.posts)
+      catch (err){
+        console.log(err)
+      }
     }
-    catch (err){
-      console.log(err)
-    }
+    fetchTweets()
+   
    }, [posts])
 
     return (

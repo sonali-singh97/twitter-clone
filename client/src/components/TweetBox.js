@@ -13,7 +13,7 @@ const TweetBox = () => {
       }
      const  headers = {
         "Content-Type": "application/json",
-        "authorization": localStorage.getItem("userId"),
+        "authorization": `Bearer ${localStorage.getItem("userId")}`,
       }
 
       try{
@@ -32,7 +32,7 @@ const TweetBox = () => {
         <div className="tweetBox">
         <form>
           <div className="tweetBox__input">
-            <Avatar src="https://image.pngaaa.com/408/81408-middle.png" />
+            <Avatar src="https://res.cloudinary.com/talk-amigo/image/upload/v1610989192/dc5dp7q6wupbfu97wkv8.png" />
             <input
               onChange={(e) => setTweetMessage(e.target.value)}
               value={tweetMessage}
