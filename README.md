@@ -9,6 +9,7 @@ MERN stack social media application
 ![Home Page Screenshot](https://res.cloudinary.com/talk-amigo/image/upload/v1627998363/twitter-home_ekkqh6.png)
 <br>
 - Login Page
+
 ![Login Page Screenshot](https://res.cloudinary.com/talk-amigo/image/upload/v1627998362/twitter-login_wxkc3n.png)
 
   
