@@ -9,11 +9,11 @@ const Feed = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-   let login;
+   let login= localStorage.getItem("userId")
 
    useEffect(() => {
 
-    login = localStorage.getItem("userId")
+    
     const fetchTweets = async() => {
       try {
         const  headers = {
