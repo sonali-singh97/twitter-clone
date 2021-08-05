@@ -6,6 +6,46 @@
   margin-right:15px;
   padding-bottom: 10px;
 
+
+  &__commentsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    div{
+      margin-left: 10px
+    }
+
+  }
+
+  &__comments{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:10px;
+    input{
+      flex: 1;
+      padding: 5px;
+      height: 30px;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      background-color: rgba($twitter-color, 0.2);
+      font-size:16px;
+      width: 100%;
+
+      &:focus{
+        outline: none;
+      }
+
+    }
+
+    .MuiButton-root {
+     margin-top:0 !important;
+     margin-left: 5px !important;
+     padding-left: 10px !important;
+     padding-right: 10px !important;
+    }
+  }
+
   &__avatar {
     //padding: 20px 10px 20px 20px;
     margin-right: 10px;
@@ -27,6 +67,25 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+
+    &__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .MuiSvgIcon-root{
+        cursor: pointer;
+        transform: translate(0);
+
+        &:hover{
+          transform: translateY(-2px)
+        }
+      }
+
+      span{
+        margin-left: 3px;
+      }
+    }
   }
 
   &__headerDescription {

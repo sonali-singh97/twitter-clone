@@ -66,7 +66,7 @@ const likePost = asyncHandler(async (req, res) => {
     try {
         const post = await Post.findByIdAndUpdate(req.body.postId, {
                 $push: {
-                    likes: req.userId
+                    likes: req.user._id
                 }
             }, {
                 new: true
@@ -83,12 +83,13 @@ const unlikePost = asyncHandler(async (req, res) => {
     try {
         const post = await Post.findByIdAndUpdate(req.body.postId, {
                 $pull: {
-                    likes: req.userId
+                    likes: req.user._id
                 }
             }, {
                 new: true
             })
             .populate("postedBy", "_id fullName image")
+            console.log(post)
 
         return res.json(post);
 

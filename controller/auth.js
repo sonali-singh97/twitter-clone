@@ -46,7 +46,6 @@ const loginUser = asyncHandler(async (req, res) => {
     } = req.body;
 
     try {
-
     const user = await User.findOne({
         email, password
     });
@@ -58,7 +57,7 @@ const loginUser = asyncHandler(async (req, res) => {
         const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "10d" });
         console.log(token)
         res.status(200).json({
-        ...user, 
+        user, 
         token
         })
     }
